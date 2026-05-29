@@ -23,14 +23,24 @@ def main():
         if opcion == "1":
             paises = cargar_csv()
             print("Datos cargados exitosamente.")
+            print("Cantidad de países cargados:", len(paises))
+            print(paises)
         elif opcion == "2":
             if paises:
-                print("Datos de países:")
+                print("\n=== LISTA DE PAISES ===")
+                
                 for pais in paises:
-                    print(pais)
+                    print(
+                        f"Nombre: {pais['nombre']} | "
+                        f"Población: {pais['poblacion']} | "
+                        f"Superficie: {pais['superficie']} km² | "
+                        f"Continente: {pais['continente']}"
+                    )
             else:
-                print("No se han cargado datos. Por favor, cargue los datos primero.")
+                print("Primero debe cargar los datos.")
         elif opcion == "3":
+            agregar_pais(paises)
+        elif opcion == "9":
             print("Saliendo del programa.")
             break
 
