@@ -1,5 +1,5 @@
-from archivo import cargar_csv
-from paises import agregar_pais
+from archivo import cargar_csv, buscar_pais, filtrar_paises
+from paises import agregar_pais, actualizar_pais, eliminar_pais
 
 #modificable ... MENU EN PROGRESO
 def menu():
@@ -40,8 +40,20 @@ def main():
                 print("Primero debe cargar los datos.")
         elif opcion == "3":
             agregar_pais(paises)
+        elif opcion == "4":
+            actualizar_pais(paises)
+        elif opcion == "5":
+            nombre = input("Ingrese el nombre del país a buscar: ")
+            buscar_pais(nombre)
+        elif opcion == "6":
+            filtrar_paises(paises)
         elif opcion == "9":
             print("Saliendo del programa.")
             break
+        else:
+            try:
+                raise ValueError("Opción no válida. Por favor, seleccione una opción del 1 al 9.")
+            except ValueError as e:
+                print(e)
 
 main()
