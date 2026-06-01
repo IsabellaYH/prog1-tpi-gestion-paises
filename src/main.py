@@ -57,13 +57,13 @@ def main():
             # Filtrar países por continente y mostrar los resultados #
             filtrar_paises(paises)
         elif opcion == "7":
-            # Ordenar países por nombre, población o superficie y mostrar los resultados #
+            # Ordenar países (lista_paises) 
             print("Funcionalidad de ordenar países en desarrollo.")
         elif opcion == "8":
             # Eliminar un país de la lista y guardar los cambios en el archivo CSV #
             eliminar_pais(paises)
         elif opcion == "9":
-            # Mostrar estadísticas como el país más poblado, el país con mayor superficie, etc. #
+            # Mostrar_estadisticas (lista_paises)
             print("Funcionalidad de estadísticas en desarrollo.")
         elif opcion == "10":
             # Salida del programa #
