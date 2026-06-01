@@ -1,6 +1,6 @@
 import csv
 import os
-
+## Ruta al archivo CSV de países, utilizando una ruta relativa para mayor portabilidad ##
 archivo_csv = os.path.join(
     os.path.dirname(__file__),
     "..",
@@ -10,12 +10,14 @@ archivo_csv = os.path.join(
 
 def cargar_csv():
     datos = []
+    # Verificar la ruta del archivo CSV y si existe antes de intentar cargarlo #
     print("Ruta absoluta:", os.path.abspath(archivo_csv))
     print("¿Existe?", os.path.exists(archivo_csv))
+    # Cargar datos desde el archivo CSV y manejar posibles errores como archivo no encontrado o errores de formato #
     try:
         with open(archivo_csv, mode="r", encoding="utf-8") as archivo:
             lector = csv.DictReader(archivo)
-
+            # Cargar cada fila del archivo CSV en una lista de diccionarios #
             for fila in lector:
                 datos.append({
                     "nombre": fila["nombre"],
@@ -23,7 +25,7 @@ def cargar_csv():
                     "superficie": float(fila["superficie"]),
                     "continente": fila["continente"]
                 })
-
+    # Manejo de errores: archivo no encontrado, errores de formato o problemas de codificación #
     except FileNotFoundError:
         print(f"No se encontró: {archivo_csv}")
 
@@ -38,7 +40,9 @@ def guardar_csv(paises):
             campos = ["nombre", "poblacion", "superficie", "continente"]
             escritor = csv.DictWriter(archivo, fieldnames=campos)
             escritor.writeheader()
+            ## Escribir cada país de la lista en el archivo CSV, asegurándose de que los datos se guarden correctamente y manejando posibles errores durante el proceso de escritura #
             for pais in paises:
+                # Proceso de escritura #
                 escritor.writerow(pais)
         print("Datos guardados exitosamente.")
     except Exception as e:
@@ -48,6 +52,7 @@ def buscar_pais(nombre):
     print(f"\n=== BUSCAR PAÍS: {nombre} ===")
     print("Ingresedo nombre del país a buscar:", nombre)
     try:
+        # Buscar el país por su nombre en la lista de países cargada desde el archivo CSV, mostrando sus detalles si se encuentra o un mensaje de error si no se encuentra #
         while paises := cargar_csv():
             for pais in paises:
                 if pais["nombre"].lower() == nombre.lower():
@@ -72,6 +77,7 @@ def filtrar_paises(paises):
     try:
         with open(archivo_csv, mode="r", encoding="utf-8") as archivo:
             lector = csv.DictReader(archivo)
+            # Cargar cada fila del archivo CSV en una lista de diccionarios #
             paises = [fila for fila in lector]
     except FileNotFoundError:
         print("Error: No se encontró el archivo de datos.")
@@ -79,7 +85,9 @@ def filtrar_paises(paises):
     
     print("Filtrar países por continente:")
     while True:
+        # Solicitar al usuario que ingrese un continente para filtrar los países #
         continente = input("Ingrese el continente (América, Europa, Asia, África, Oceanía): ")
+        # Filtrar la lista de países por el continente ingresado por el usuario #
         paises_filtrados = [pais for pais in paises if pais['continente'].lower() == continente.lower()]
         if paises_filtrados:
             print(f"Países en {continente}:")

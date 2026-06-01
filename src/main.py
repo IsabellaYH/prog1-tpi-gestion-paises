@@ -1,7 +1,7 @@
 from archivo import cargar_csv, buscar_pais, filtrar_paises
 from paises import agregar_pais, actualizar_pais, eliminar_pais
 
-#modificable ... MENU EN PROGRESO
+### ---- MENU PRINCIPAL ---- ###
 def menu():
     print("\n=== GESTIÓN DE PAÍSES ===")
     print("1. Cargar datos")
@@ -14,18 +14,22 @@ def menu():
     print("8. Estadísticas")
     print("9. Salir")
 
-
+### ---- FUNCION PARA INGRESAR EN OPCIONES DEL MENÚ ---- ###
 def main():
     paises = []
+    # El programa se ejecutará hasta que el usuario seleccione la opción de salir (9) #
     while True:
         menu()
         opcion = input("Seleccione una opción: ")
+        ## Validación de la opción ingresada ##
         if opcion == "1":
+            # Cargar datos desde el archivo CSV #
             paises = cargar_csv()
             print("Datos cargados exitosamente.")
             print("Cantidad de países cargados:", len(paises))
             print(paises)
         elif opcion == "2":
+            # Mostrar datos cargados de la sesion #
             if paises:
                 print("\n=== LISTA DE PAISES ===")
                 
@@ -39,19 +43,31 @@ def main():
             else:
                 print("Primero debe cargar los datos.")
         elif opcion == "3":
+            # Agregar un nuevo país a la lista y guardar en el archivo CSV #
             agregar_pais(paises)
         elif opcion == "4":
+            # Actualizar un país existente en la lista y guardar los cambios en el archivo CSV #
             actualizar_pais(paises)
         elif opcion == "5":
+            # Buscar un país por su nombre y mostrar sus detalles #
             nombre = input("Ingrese el nombre del país a buscar: ")
             buscar_pais(nombre)
         elif opcion == "6":
+            # Filtrar países por continente y mostrar los resultados #
             filtrar_paises(paises)
+        elif opcion == "7":
+            # Ordenar países por nombre, población o superficie y mostrar los resultados #
+            print("Funcionalidad de ordenar países en desarrollo.")
+        elif opcion == "8":
+            # Mostrar estadísticas como el país más poblado, el país con mayor superficie, etc. #
+            print("Funcionalidad de estadísticas en desarrollo.")
         elif opcion == "9":
+            # Salida del programa #
             print("Saliendo del programa.")
             break
         else:
             try:
+                # Validación de error de la opción ingresada #
                 raise ValueError("Opción no válida. Por favor, seleccione una opción del 1 al 9.")
             except ValueError as e:
                 print(e)
