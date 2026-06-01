@@ -50,7 +50,7 @@ def main():
             # Actualizar un país existente en la lista y guardar los cambios en el archivo CSV #
             actualizar_pais(paises)
         elif opcion == "5":
-            # Buscar un país por su nombre y mostrar sus detalles #
+            # Buscar un país por su nombre y mostrar sus detalles 
             nombre = input("Ingrese el nombre del país a buscar: ").strip()
             if nombre:
              buscar_pais(paises, nombre)
