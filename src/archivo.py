@@ -48,30 +48,17 @@ def guardar_csv(paises):
     except Exception as e:
         print(f"Error al guardar el archivo: {e}")
 
-def buscar_pais(nombre):
-    print(f"\n=== BUSCAR PAÍS: {nombre} ===")
-    print("Ingresedo nombre del país a buscar:", nombre)
-    try:
-        # Buscar el país por su nombre en la lista de países cargada desde el archivo CSV, mostrando sus detalles si se encuentra o un mensaje de error si no se encuentra #
-        while paises := cargar_csv():
-            for pais in paises:
-                if pais["nombre"].lower() == nombre.lower():
-                    print(f"País encontrado: {pais['nombre']}")
-                    print(f"Población: {pais['poblacion']}")
-                    print(f"Superficie: {pais['superficie']} km²")
-                    print(f"Continente: {pais['continente']}")
-                    return pais
-            print("País no encontrado.")
-            return None
-    except Exception as e:
-        print(f"Error al buscar el país: {e}")
-        return TypeError("Error el valor debe ser una cadena de texto.")
-    except SyntaxError as e:
-        print(f"Error de sintaxis: {e}")
-        return SyntaxError("Error de sintaxis en la función buscar_pais.")
-    except ValueError as e:
-        print(f"Error de valor: {e}")
-        return ValueError("Error de valor en la función buscar_pais.")  
+def buscar_pais(paises, nombre):
+    for pais in paises:
+        if pais["nombre"].lower() == nombre.lower():
+            print(f"País encontrado: {pais['nombre']}")
+            print(f"Población: {pais['poblacion']}")
+            print(f"Superficie: {pais['superficie']} km²")
+            print(f"Continente: {pais['continente']}")
+            return pais
+    print("País no encontrado.")
+    return None
+
 
 def filtrar_paises(paises):
     try:

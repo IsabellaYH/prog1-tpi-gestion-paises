@@ -51,13 +51,18 @@ def main():
             actualizar_pais(paises)
         elif opcion == "5":
             # Buscar un país por su nombre y mostrar sus detalles #
+            nombre = input("Ingrese el nombre del país a buscar: ").strip()
+            if nombre:
+             buscar_pais(paises, nombre)
+            else:
+                print("Debe ingresar un nombre.")
             nombre = input("Ingrese el nombre del país a buscar: ")
-            buscar_pais(nombre)
+        
         elif opcion == "6":
             # Filtrar países por continente y mostrar los resultados #
             filtrar_paises(paises)
         elif opcion == "7":
-            # Ordenar países (lista_paises) 
+            # Ordenar países por nombre de la A-Z
             print("Funcionalidad de ordenar países en desarrollo.")
         elif opcion == "8":
             # Eliminar un país de la lista y guardar los cambios en el archivo CSV #
