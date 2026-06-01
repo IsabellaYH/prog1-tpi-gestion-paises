@@ -20,28 +20,26 @@ def agregar_pais(paises):
     print(f"País '{nombre}' agregado exitosamente.")
     
 
-def actualizar_pais (paises):
-    print ("\n=== ACTUALIZAR PAÍS ===")
-    nombre = input ("Ingrese el nombre del país a actualizar: ")
+def actualizar_pais(paises):
+    print("\n=== ACTUALIZAR PAÍS ===")
+    nombre = input("Ingrese el nombre del país a actualizar: ")
     for pais in paises:
-        ## Buscar el país por su nombre y permitir al usuario actualizar sus detalles #
         if pais["nombre"].lower() == nombre.lower():
             print(f"País encontrado: {pais['nombre']}")
             nuevo_nombre = input("Nuevo nombre (dejar en blanco para no cambiar): ")
-            nueva_poblacion = int(input("Nueva población (dejar en blanco para no cambiar): "))
-            nueva_superficie = int(input("Nueva superficie (dejar en blanco para no cambiar): "))
+            nueva_poblacion = input("Nueva población (dejar en blanco para no cambiar): ")      
+            nueva_superficie = input("Nueva superficie (dejar en blanco para no cambiar): ")    
             nuevo_continente = input("Nuevo continente (dejar en blanco para no cambiar): ")
-        ## Actualizar los detalles del país solo si el usuario ingresó un nuevo valor # 
+
             if nuevo_nombre:
                 pais["nombre"] = nuevo_nombre
             if nueva_poblacion:
-                pais["poblacion"] = int(nueva_poblacion)
+                pais["poblacion"] = int(nueva_poblacion)      
             if nueva_superficie:
-                pais["superficie"] = int(nueva_superficie)
+                pais["superficie"] = float(nueva_superficie)  
             if nuevo_continente:
                 pais["continente"] = nuevo_continente
 
-            ## Guardar los cambios en el archivo CSV después de actualizar el país #
             guardar_csv(paises)
             print(f"País '{pais['nombre']}' actualizado exitosamente.")
             return
