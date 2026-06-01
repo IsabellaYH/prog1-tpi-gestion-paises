@@ -11,13 +11,14 @@ def menu():
     print("5. Buscar país")
     print("6. Filtrar países")
     print("7. Ordenar países")
-    print("8. Estadísticas")
-    print("9. Salir")
+    print("8.Eliminar país")
+    print("9. Estadísticas")
+    print("10. Salir")
 
 ### ---- FUNCION PARA INGRESAR EN OPCIONES DEL MENÚ ---- ###
 def main():
     paises = []
-    # El programa se ejecutará hasta que el usuario seleccione la opción de salir (9) #
+    # El programa se ejecutará hasta que el usuario seleccione la opción de salir (10) #
     while True:
         menu()
         opcion = input("Seleccione una opción: ")
@@ -59,16 +60,19 @@ def main():
             # Ordenar países por nombre, población o superficie y mostrar los resultados #
             print("Funcionalidad de ordenar países en desarrollo.")
         elif opcion == "8":
+            # Eliminar un país de la lista y guardar los cambios en el archivo CSV #
+            eliminar_pais(paises)
+        elif opcion == "9":
             # Mostrar estadísticas como el país más poblado, el país con mayor superficie, etc. #
             print("Funcionalidad de estadísticas en desarrollo.")
-        elif opcion == "9":
+        elif opcion == "10":
             # Salida del programa #
             print("Saliendo del programa.")
             break
         else:
             try:
                 # Validación de error de la opción ingresada #
-                raise ValueError("Opción no válida. Por favor, seleccione una opción del 1 al 9.")
+                raise ValueError("Opción no válida. Por favor, seleccione una opción del 1 al 10.")
             except ValueError as e:
                 print(e)
 

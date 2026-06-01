@@ -22,7 +22,7 @@ def cargar_csv():
                 datos.append({
                     "nombre": fila["nombre"],
                     "poblacion": int(fila["poblacion"]),
-                    "superficie": float(fila["superficie"]),
+                    "superficie": int(fila["superficie"]),
                     "continente": fila["continente"]
                 })
     # Manejo de errores: archivo no encontrado, errores de formato o problemas de codificación #

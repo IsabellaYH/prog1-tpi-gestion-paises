@@ -5,7 +5,7 @@ def agregar_pais(paises):
     print("\n=== AGREGAR NUEVO PAÍS ===")
     nombre = input("Nombre del país: ")
     poblacion = int(input("Población: "))
-    superficie = float(input("Superficie (km²): "))
+    superficie = int(input("Superficie (km²): "))
     continente = input("Continente: ")
     ## Crear un nuevo diccionario para el país y agregarlo a la lista de países #
     nuevo_pais = {
@@ -28,8 +28,8 @@ def actualizar_pais (paises):
         if pais["nombre"].lower() == nombre.lower():
             print(f"País encontrado: {pais['nombre']}")
             nuevo_nombre = input("Nuevo nombre (dejar en blanco para no cambiar): ")
-            nueva_poblacion = input("Nueva población (dejar en blanco para no cambiar): ")
-            nueva_superficie = input("Nueva superficie (dejar en blanco para no cambiar): ")
+            nueva_poblacion = int(input("Nueva población (dejar en blanco para no cambiar): "))
+            nueva_superficie = int(input("Nueva superficie (dejar en blanco para no cambiar): "))
             nuevo_continente = input("Nuevo continente (dejar en blanco para no cambiar): ")
         ## Actualizar los detalles del país solo si el usuario ingresó un nuevo valor # 
             if nuevo_nombre:
@@ -37,7 +37,7 @@ def actualizar_pais (paises):
             if nueva_poblacion:
                 pais["poblacion"] = int(nueva_poblacion)
             if nueva_superficie:
-                pais["superficie"] = float(nueva_superficie)
+                pais["superficie"] = int(nueva_superficie)
             if nuevo_continente:
                 pais["continente"] = nuevo_continente
 
