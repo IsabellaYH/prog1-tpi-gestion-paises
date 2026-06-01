@@ -50,35 +50,19 @@ def main():
             # Actualizar un país existente en la lista y guardar los cambios en el archivo CSV #
             actualizar_pais(paises)
         elif opcion == "5":
-            # Buscar un país por su nombre y mostrar sus detalles 
+            eliminar_pais(paises)          
+        elif opcion == "6":
             nombre = input("Ingrese el nombre del país a buscar: ").strip()
             if nombre:
              buscar_pais(paises, nombre)
             else:
                 print("Debe ingresar un nombre.")
-            nombre = input("Ingrese el nombre del país a buscar: ")
-        
-        elif opcion == "6":
-            # Filtrar países por continente y mostrar los resultados #
-            filtrar_paises(paises)
         elif opcion == "7":
-            # Ordenar países por nombre de la A-Z
-            print("Funcionalidad de ordenar países en desarrollo.")
+            filtrar_paises(paises)
         elif opcion == "8":
-            # Eliminar un país de la lista y guardar los cambios en el archivo CSV #
-            eliminar_pais(paises)
+            pass  # ordenar (próximo fix)
         elif opcion == "9":
-            # Mostrar_estadisticas (lista_paises)
-            print("Funcionalidad de estadísticas en desarrollo.")
+            pass  # estadísticas (próximo fix)
         elif opcion == "10":
-            # Salida del programa #
             print("Saliendo del programa.")
-            break
-        else:
-            try:
-                # Validación de error de la opción ingresada #
-                raise ValueError("Opción no válida. Por favor, seleccione una opción del 1 al 10.")
-            except ValueError as e:
-                print(e)
-
-main()
+        break
