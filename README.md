@@ -45,7 +45,7 @@ El archivo `data/paises.csv` contiene los siguientes campos:
 |-------|------|-------------|
 | `nombre` | string | Nombre del país |
 | `poblacion` | entero | Cantidad de habitantes |
-| `superficie` | decimal | Superficie en km² |
+| `superficie` | int | Superficie en km² |
 | `continente` | string | Continente al que pertenece |
 
 ---
