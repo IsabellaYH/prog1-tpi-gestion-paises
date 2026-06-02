@@ -90,3 +90,25 @@ def ordenar_paises(paises):
             f"Superficie: {pais['superficie']} km² | "
             f"Continente: {pais['continente']}"
         )    
+
+def estadisticas(paises):
+    print("\n=== ESTADÍSTICAS ===")
+
+    mas_poblado = max(paises, key=lambda p: p["poblacion"])
+    menos_poblado = min(paises, key=lambda p: p["poblacion"])
+    mayor_superficie = max(paises, key=lambda p: p["superficie"])
+    menor_superficie = min(paises, key=lambda p: p["superficie"])
+    poblacion_total = sum(p["poblacion"] for p in paises)
+    superficie_total = sum(p["superficie"] for p in paises)
+    promedio_poblacion = poblacion_total / len(paises)
+    densidad_promedio = poblacion_total / superficie_total
+
+    print(f"Total de países:       {len(paises)}")
+    print(f"Población total:       {poblacion_total:,}")
+    print(f"Superficie total:      {superficie_total:,.2f} km²")
+    print(f"Promedio de población: {promedio_poblacion:,.0f} hab")
+    print(f"Densidad promedio:     {densidad_promedio:.2f} hab/km²")
+    print(f"País más poblado:      {mas_poblado['nombre']} ({mas_poblado['poblacion']:,} hab)")
+    print(f"País menos poblado:    {menos_poblado['nombre']} ({menos_poblado['poblacion']:,} hab)")
+    print(f"Mayor superficie:      {mayor_superficie['nombre']} ({mayor_superficie['superficie']:,.2f} km²)")
+    print(f"Menor superficie:      {menor_superficie['nombre']} ({menor_superficie['superficie']:,.2f} km²)")
