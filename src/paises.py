@@ -50,17 +50,7 @@ def actualizar_pais(paises):
             return
     print("País no encontrado.")
 
-def buscar_pais(paises, nombre):
-    print("\n=== BUSCAR PAÍS ===")
-    for pais in paises:
-        if pais["nombre"].lower() == nombre.lower():
-            print(f"País encontrado: {pais['nombre']}")
-            print(f"Población:       {pais['poblacion']:,} hab")
-            print(f"Superficie:      {pais['superficie']:,.2f} km²")
-            print(f"Continente:      {pais['continente']}")
-            return pais
-    print("País no encontrado.")
-    return None
+
 
 def eliminar_pais(paises):
     print("\n=== ELIMINAR PAÍS ===")

@@ -48,26 +48,24 @@ def guardar_csv(paises):
     except Exception as e:
         print(f"Error al guardar el archivo: {e}")
 
+def buscar_pais(paises, nombre):
+    for pais in paises:
+        if pais["nombre"].lower() == nombre.lower():
+            print(f"País encontrado: {pais['nombre']}")
+            print(f"Población:  {pais['poblacion']:,} hab")
+            print(f"Superficie: {pais['superficie']:,.2f} km²")
+            print(f"Continente: {pais['continente']}")
+            return pais
+    print("País no encontrado.")
+    return None
+
 
 def filtrar_paises(paises):
-    try:
-        with open(archivo_csv, mode="r", encoding="utf-8") as archivo:
-            lector = csv.DictReader(archivo)
-            # Cargar cada fila del archivo CSV en una lista de diccionarios #
-            paises = [fila for fila in lector]
-    except FileNotFoundError:
-        print("Error: No se encontró el archivo de datos.")
-        return
-    
-    print("Filtrar países por continente:")
-    while True:
-        # Solicitar al usuario que ingrese un continente para filtrar los países #
-        continente = input("Ingrese el continente (América, Europa, Asia, África, Oceanía): ")
-        # Filtrar la lista de países por el continente ingresado por el usuario #
-        paises_filtrados = [pais for pais in paises if pais['continente'].lower() == continente.lower()]
-        if paises_filtrados:
-            print(f"Países en {continente}:")
-            for pais in paises_filtrados:
-                print(f"- {pais['nombre']}")
-        else:
-            print(f"No se encontraron países en el continente {continente}.")
+    continente = input("Ingrese el continente a filtrar: ").strip()
+    filtrados = [p for p in paises if p["continente"].lower() == continente.lower()]
+    if filtrados:
+        print(f"\nPaíses en {continente}:")
+        for pais in filtrados:
+            print(f"  - {pais['nombre']}")
+    else:
+        print(f"No se encontraron países en {continente}.")
