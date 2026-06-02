@@ -54,14 +54,12 @@ def actualizar_pais(paises):
 def eliminar_pais(paises):
     print("\n=== ELIMINAR PAÍS ===")
     nombre = input("Ingrese el nombre del país a eliminar: ")
-    # Buscar el país por su nombre #
     for i, pais in enumerate(paises):
         if pais["nombre"].lower() == nombre.lower():
-            confirmacion = input(f"¿Está seguro que desea eliminar '{pais['nombre']}'? (s/n): ")
-            # Eliminar el país solo si el usuario confirma la acción #
-            if confirmacion.lower() == 's':
+            confirmacion = validar_confirmacion(f"¿Está seguro que desea eliminar '{pais['nombre']}'? (s/n): ")
+            if confirmacion == "s":
                 del paises[i]
-                guardar_csv(paises)
+                guardar_csv(paises)   # ← debe estar acá
                 print(f"País '{nombre}' eliminado exitosamente.")
             else:
                 print("Eliminación cancelada.")
