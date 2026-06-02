@@ -46,23 +46,97 @@ def guardar_csv(paises):
         print(f"Error al guardar el archivo: {e}")
 
 def buscar_pais(paises, nombre):
+    encontrados = []
+
+    # Permite búsqueda exacta o parcial
     for pais in paises:
-        if pais["nombre"].lower() == nombre.lower():
-            print(f"País encontrado: {pais['nombre']}")
+        if nombre.lower() in pais["nombre"].lower():
+            encontrados.append(pais)
+
+    if encontrados:
+        print("\n=== RESULTADOS DE LA BÚSQUEDA ===")
+
+        for pais in encontrados:
+            print(f"\nPaís encontrado: {pais['nombre']}")
             print(f"Población:  {pais['poblacion']:,} hab")
             print(f"Superficie: {pais['superficie']:,.2f} km²")
             print(f"Continente: {pais['continente']}")
-            return pais
+
+        return encontrados
+
     print("País no encontrado.")
     return None
 
 
 def filtrar_paises(paises):
+    print("\n=== FILTRAR PAÍSES ===")
+    print("Seleccione una opción de filtrado:")
+    print("1. Por continente")
+    print("2. Rango de población")
+    print("3. Rango de superficie")
+    opcion = input("Opción: ")
+
+    if opcion == "1":
+        filtrar_por_continente(paises)
+    elif opcion == "2":
+        filtrar_por_poblacion(paises)
+    elif opcion == "3":
+        filtrar_por_superficie(paises)
+    else:
+        print("Opción no válida.")
+        return
+    
+def filtrar_por_continente(paises):
+    # Permite filtrar países por continente, mostrando solo aquellos que coincidan con el continente ingresado por el usuario #
     continente = input("Ingrese el continente a filtrar: ").strip()
     filtrados = [p for p in paises if p["continente"].lower() == continente.lower()]
+
     if filtrados:
         print(f"\nPaíses en {continente}:")
         for pais in filtrados:
             print(f"  - {pais['nombre']}")
     else:
         print(f"No se encontraron países en {continente}.")
+        return
+    
+def filtrar_por_poblacion(paises):
+    #filtro por rango de población, permitiendo al usuario ingresar un rango mínimo y máximo para mostrar solo los países cuya población se encuentre dentro de ese rango #
+    while True:
+        valor = input("Ingrese el rango de población (min-max): ").strip()
+        if "-" in valor:
+            try:
+                min_poblacion, max_poblacion = map(int, valor.split("-"))
+                filtrados = [p for p in paises if min_poblacion <= p["poblacion"] <= max_poblacion]
+                if filtrados:
+                    print(f"\nPaíses con población entre {min_poblacion} y {max_poblacion}:")
+                    for pais in filtrados:
+                        print(f"  - {pais['nombre']}")
+                else:
+                    print(f"No se encontraron países con población entre {min_poblacion} y {max_poblacion}.")
+                return
+            except ValueError:
+                print("Rango no válido. Intente nuevamente.")
+        else:
+            print("Formato incorrecto. Use el formato min-max.")
+            return
+
+def filtrar_por_superficie(paises):
+#filtro por rango de superficie, permitiendo al usuario ingresar un rango mínimo y máximo para mostrar solo los países cuya superficie se encuentre dentro de ese rango #
+    while True:
+        valor = input("Ingrese el rango de superficie (min-max): ").strip()
+        if "-" in valor:
+            try:
+                min_superficie, max_superficie = map(float, valor.split("-"))
+                filtrados = [p for p in paises if min_superficie <= p["superficie"] <= max_superficie]
+                if filtrados:
+                    print(f"\nPaíses con superficie entre {min_superficie} y {max_superficie} km²:")
+                    for pais in filtrados:
+                        print(f"  - {pais['nombre']}")
+                else:
+                    print(f"No se encontraron países con superficie entre {min_superficie} y {max_superficie} km².")
+                return
+            except ValueError:
+                print("Rango no válido. Intente nuevamente.")
+        else:
+            print("Formato incorrecto. Use el formato min-max.")
+            return

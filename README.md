@@ -29,10 +29,10 @@ prog1-tpi-gestion-paises/
 | 3      | Agregar un nuevo país |
 | 4      | Actualizar los datos de un país existente |
 | 5      | Buscar un país por nombre |
-| 6      | Filtrar países por continente |
+| 6      | Filtrar países por continente, superficie o población |
 | 7      | Ordenar países  |
-| 8      | Eliminar pais   |
-| 9      | Ver estadísticas |
+| 8      | Estadísticas   |
+| 9      | Eliminar país |
 | 10     | Salir |
 
 ---

@@ -73,15 +73,24 @@ def ordenar_paises(paises):
     print("2. Por población")
     print("3. Por superficie")
     criterio = input("Seleccione criterio: ")
+    # Se pide orden para luego mostrar según criterio elegido
+    print("\n1. Ascendente")
+    print("2. Descendente")
+    orden = input("Seleccione orden: ")
 
+    reverse = orden == "2"
+    if orden not in ("1", "2"):
+        print("Orden no válido.")
+        return
+    
     if criterio == "1":
-        ordenados = sorted(paises, key=lambda p: p["nombre"].lower())
+        ordenados = sorted(paises, key=lambda p: p["nombre"].lower(), reverse=reverse)
         clave = "nombre"
     elif criterio == "2":
-        ordenados = sorted(paises, key=lambda p: p["poblacion"])
+        ordenados = sorted(paises, key=lambda p: p["poblacion"], reverse=reverse)
         clave = "poblacion"
     elif criterio == "3":
-        ordenados = sorted(paises, key=lambda p: p["superficie"])
+        ordenados = sorted(paises, key=lambda p: p["superficie"], reverse=reverse)
         clave = "superficie"
     else:
         print("Criterio no válido.")
@@ -98,7 +107,7 @@ def ordenar_paises(paises):
 
 def estadisticas(paises):
     print("\n=== ESTADÍSTICAS ===")
-
+  #Se calculan estadísticas por pais menos poblado, mayor superficie, promedios, etc.
     mas_poblado = max(paises, key=lambda p: p["poblacion"])
     menos_poblado = min(paises, key=lambda p: p["poblacion"])
     mayor_superficie = max(paises, key=lambda p: p["superficie"])
@@ -106,14 +115,25 @@ def estadisticas(paises):
     poblacion_total = sum(p["poblacion"] for p in paises)
     superficie_total = sum(p["superficie"] for p in paises)
     promedio_poblacion = poblacion_total / len(paises)
+    promedio_superficie = superficie_total / len(paises)
     densidad_promedio = poblacion_total / superficie_total
+    #Informamos cantidad de paises por continente
+    paises_por_continente = {}
+    for pais in paises:
+        continente = pais["continente"]
+        paises_por_continente[continente] = (paises_por_continente.get(continente, 0) + 1)
 
     print(f"Total de países:       {len(paises)}")
     print(f"Población total:       {poblacion_total:,}")
     print(f"Superficie total:      {superficie_total:,.2f} km²")
     print(f"Promedio de población: {promedio_poblacion:,.0f} hab")
+    print(f"Promedio de superficie: {promedio_superficie:,.2f} km²")
     print(f"Densidad promedio:     {densidad_promedio:.2f} hab/km²")
     print(f"País más poblado:      {mas_poblado['nombre']} ({mas_poblado['poblacion']:,} hab)")
     print(f"País menos poblado:    {menos_poblado['nombre']} ({menos_poblado['poblacion']:,} hab)")
     print(f"Mayor superficie:      {mayor_superficie['nombre']} ({mayor_superficie['superficie']:,.2f} km²)")
     print(f"Menor superficie:      {menor_superficie['nombre']} ({menor_superficie['superficie']:,.2f} km²)")
+    print("\nCantidad de países por continente:")
+   
+    for continente, cantidad in paises_por_continente.items():
+        print(f"  - {continente}: {cantidad}")
