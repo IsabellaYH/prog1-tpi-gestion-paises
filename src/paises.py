@@ -6,6 +6,11 @@ from validaciones import validar_texto, validar_entero, validar_flotante
 def agregar_pais(paises):          
     print("\n=== AGREGAR NUEVO PAÍS ===")
     nombre     = validar_texto("Nombre del país: ", "nombre")
+    # validación de duplicado
+    if any(p["nombre"].lower() == nombre.lower() for p in paises):
+        print(f"Error: el país '{nombre}' ya existe.")
+        return
+
     poblacion  = validar_entero("Población: ", "población")
     superficie = validar_flotante("Superficie (km²): ", "superficie")
     continente = validar_texto("Continente: ", "continente")
