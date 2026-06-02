@@ -1,13 +1,15 @@
 from archivo import guardar_csv
+from validaciones import validar_texto, validar_entero, validar_flotante  
 
 ### ---- FUNCIONES PARA AGREGAR, ACTUALIZAR Y ELIMINAR PAÍSES ---- ###
-def agregar_pais(paises):
+
+def agregar_pais(paises):          
     print("\n=== AGREGAR NUEVO PAÍS ===")
-    nombre = input("Nombre del país: ")
-    poblacion = int(input("Población: "))
-    superficie = int(input("Superficie (km²): "))
-    continente = input("Continente: ")
-    ## Crear un nuevo diccionario para el país y agregarlo a la lista de países #
+    nombre     = validar_texto("Nombre del país: ", "nombre")
+    poblacion  = validar_entero("Población: ", "población")
+    superficie = validar_flotante("Superficie (km²): ", "superficie")
+    continente = validar_texto("Continente: ", "continente")
+
     nuevo_pais = {
         "nombre": nombre,
         "poblacion": poblacion,
@@ -15,28 +17,26 @@ def agregar_pais(paises):
         "continente": continente
     }
     paises.append(nuevo_pais)
-    ## Guardar los cambios en el archivo CSV después de agregar el nuevo país #
     guardar_csv(paises)
-    print(f"País '{nombre}' agregado exitosamente.")
-    
+    print(f"País '{nombre}' agregado exitosamente.")  
 
 def actualizar_pais(paises):
     print("\n=== ACTUALIZAR PAÍS ===")
-    nombre = input("Ingrese el nombre del país a actualizar: ")
+    nombre = validar_texto("Ingrese el nombre del país a actualizar: ", "nombre")
     for pais in paises:
         if pais["nombre"].lower() == nombre.lower():
             print(f"País encontrado: {pais['nombre']}")
-            nuevo_nombre = input("Nuevo nombre (dejar en blanco para no cambiar): ")
-            nueva_poblacion = input("Nueva población (dejar en blanco para no cambiar): ")      
-            nueva_superficie = input("Nueva superficie (dejar en blanco para no cambiar): ")    
-            nuevo_continente = input("Nuevo continente (dejar en blanco para no cambiar): ")
+            nuevo_nombre   = input("Nuevo nombre (dejar en blanco para no cambiar): ").strip()
+            nueva_poblacion  = validar_entero("Nueva población (dejar en blanco para no cambiar): ", "población")
+            nueva_superficie = validar_flotante("Nueva superficie (dejar en blanco para no cambiar): ", "superficie")
+            nuevo_continente = input("Nuevo continente (dejar en blanco para no cambiar): ").strip()
 
             if nuevo_nombre:
                 pais["nombre"] = nuevo_nombre
             if nueva_poblacion:
-                pais["poblacion"] = int(nueva_poblacion)      
+                pais["poblacion"] = nueva_poblacion
             if nueva_superficie:
-                pais["superficie"] = float(nueva_superficie)  
+                pais["superficie"] = nueva_superficie
             if nuevo_continente:
                 pais["continente"] = nuevo_continente
 
@@ -44,6 +44,7 @@ def actualizar_pais(paises):
             print(f"País '{pais['nombre']}' actualizado exitosamente.")
             return
     print("País no encontrado.")
+
 
 def eliminar_pais(paises):
     print("\n=== ELIMINAR PAÍS ===")
