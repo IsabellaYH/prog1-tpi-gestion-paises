@@ -61,4 +61,32 @@ def eliminar_pais(paises):
                 print("Eliminación cancelada.")
             return
     print("País no encontrado.")
-    
+
+def ordenar_paises(paises):
+    print("\n=== ORDENAR PAÍSES ===")
+    print("1. Por nombre")
+    print("2. Por población")
+    print("3. Por superficie")
+    criterio = input("Seleccione criterio: ")
+
+    if criterio == "1":
+        ordenados = sorted(paises, key=lambda p: p["nombre"].lower())
+        clave = "nombre"
+    elif criterio == "2":
+        ordenados = sorted(paises, key=lambda p: p["poblacion"])
+        clave = "poblacion"
+    elif criterio == "3":
+        ordenados = sorted(paises, key=lambda p: p["superficie"])
+        clave = "superficie"
+    else:
+        print("Criterio no válido.")
+        return
+
+    print(f"\n=== PAÍSES ORDENADOS POR {clave.upper()} ===")
+    for pais in ordenados:
+        print(
+            f"Nombre: {pais['nombre']} | "
+            f"Población: {pais['poblacion']} | "
+            f"Superficie: {pais['superficie']} km² | "
+            f"Continente: {pais['continente']}"
+        )    
