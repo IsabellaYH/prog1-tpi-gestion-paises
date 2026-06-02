@@ -1,5 +1,5 @@
 from archivo import cargar_csv, buscar_pais, filtrar_paises
-from paises import agregar_pais, actualizar_pais, eliminar_pais, ordenar_paises 
+from paises import agregar_pais, actualizar_pais, eliminar_pais, ordenar_paises, estadisticas 
 
 ### ---- MENU PRINCIPAL ---- ###
 def menu():
@@ -62,7 +62,10 @@ def main():
         elif opcion == "8":
             ordenar_paises(paises)
         elif opcion == "9":
-            pass  # estadísticas (próximo fix)
+            if paises:
+                estadisticas(paises)
+            else:
+                print("Primero debe cargar los datos.")
         elif opcion == "10":
             print("Saliendo del programa.")
         break
