@@ -15,7 +15,7 @@ prog1-tpi-gestion-paises/
     ├── main.py             # Menú principal y punto de entrada
     ├── paises.py           # Lógica de agregar, actualizar y eliminar países
     ├── archivo.py          # Operaciones sobre el archivo CSV
-    └── validaciones.py     # Módulo de validaciones (en desarrollo)
+    └── validaciones.py     # Módulo de validaciones de entrada del usuario
 ```
 
 ---
@@ -24,16 +24,16 @@ prog1-tpi-gestion-paises/
 
 | Opción | Descripción |
 |--------|-------------|
-| 1 | Cargar datos desde el archivo CSV |
-| 2 | Mostrar todos los países cargados |
-| 3 | Agregar un nuevo país |
-| 4 | Actualizar los datos de un país existente |
-| 5 | Buscar un país por nombre |
-| 6 | Filtrar países por continente |
-| 7 | Ordenar países *(en desarrollo)* |
-| 8 | Eliminar pais *(en desarrollo)*  |
-| 9 | Ver estadísticas *(en desarrollo)* |
-| 10 | Salir |
+| 1      | Cargar datos desde el archivo CSV |
+| 2      | Mostrar todos los países cargados |
+| 3      | Agregar un nuevo país |
+| 4      | Actualizar los datos de un país existente |
+| 5      | Buscar un país por nombre |
+| 6      | Filtrar países por continente |
+| 7      | Ordenar países  |
+| 8      | Eliminar pais   |
+| 9      | Ver estadísticas |
+| 10     | Salir |
 
 ---
 
@@ -81,5 +81,22 @@ Contiene la lógica de modificación de datos:
 - `actualizar_pais(paises)` — Permite editar campos de un país existente.
 - `eliminar_pais(paises)` — Elimina un país con confirmación del usuario.
 
-### `validaciones.py`
-Módulo reservado para funciones de validación de entrada *(en desarrollo)*.
+##  Validaciones implementadas
+
+- Nombre y continente no pueden estar vacíos
+- Población debe ser un número entero mayor a 0
+- Superficie debe ser un número mayor a 0
+- No se pueden agregar países duplicados
+- Confirmación antes de eliminar un país
+
+##  Autores
+
+|    Nombre    |   GitHub    |
+|  Nuñez Lucia | lunu-gibhub |
+|              | IsabellaYH  |
+
+---
+
+## Licencia
+
+Proyecto académico — Programación I 
