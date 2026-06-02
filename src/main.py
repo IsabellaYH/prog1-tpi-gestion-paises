@@ -1,4 +1,4 @@
-from archivo import cargar_csv, filtrar_paises
+from archivo import cargar_csv,  filtrar_paises, guardar_csv 
 from paises import agregar_pais, actualizar_pais, eliminar_pais, buscar_pais, ordenar_paises, estadisticas
 
 def menu():
@@ -37,9 +37,11 @@ def main():
                 print("Primero debe cargar los datos.")
         elif opcion == "3":
             agregar_pais(paises)
+            cargar_csv(paises)
         elif opcion == "4":
             if paises:
-                actualizar_pais(paises)
+                actualizar_pais(paises) 
+                cargar_csv(paises)
             else:
                 print("Primero debe cargar los datos.")
         elif opcion == "5":

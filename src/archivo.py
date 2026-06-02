@@ -10,9 +10,6 @@ archivo_csv = os.path.join(
 
 def cargar_csv():
     datos = []
-    # Verificar la ruta del archivo CSV y si existe antes de intentar cargarlo #
-    print("Ruta absoluta:", os.path.abspath(archivo_csv))
-    print("¿Existe?", os.path.exists(archivo_csv))
     # Cargar datos desde el archivo CSV y manejar posibles errores como archivo no encontrado o errores de formato #
     try:
         with open(archivo_csv, mode="r", encoding="utf-8") as archivo:
