@@ -48,17 +48,6 @@ def guardar_csv(paises):
     except Exception as e:
         print(f"Error al guardar el archivo: {e}")
 
-def buscar_pais(paises, nombre):
-    for pais in paises:
-        if pais["nombre"].lower() == nombre.lower():
-            print(f"País encontrado: {pais['nombre']}")
-            print(f"Población: {pais['poblacion']}")
-            print(f"Superficie: {pais['superficie']} km²")
-            print(f"Continente: {pais['continente']}")
-            return pais
-    print("País no encontrado.")
-    return None
-
 
 def filtrar_paises(paises):
     try:
