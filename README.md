@@ -93,7 +93,7 @@ Contiene la lógica de modificación de datos:
 
 |    Nombre    |   GitHub    |
 |  Nuñez Lucia | lunu-gibhub |
-|              | IsabellaYH  |
+| Yanes Leanny | IsabellaYH  |
 
 ---
 

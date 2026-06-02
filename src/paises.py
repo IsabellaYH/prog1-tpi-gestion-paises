@@ -1,5 +1,5 @@
 from archivo import guardar_csv
-from validaciones import validar_texto, validar_entero, validar_flotante  
+from validaciones import validar_texto, validar_entero, validar_confirmacion  
 
 ### ---- FUNCIONES PARA AGREGAR, ACTUALIZAR Y ELIMINAR PAÍSES ---- ###
 
@@ -12,7 +12,7 @@ def agregar_pais(paises):
         return
 
     poblacion  = validar_entero("Población: ", "población")
-    superficie = validar_flotante("Superficie (km²): ", "superficie")
+    superficie = validar_entero("Superficie (km²): ", "superficie")
     continente = validar_texto("Continente: ", "continente")
 
     nuevo_pais = {
@@ -33,7 +33,7 @@ def actualizar_pais(paises):
             print(f"País encontrado: {pais['nombre']}")
             nuevo_nombre   = input("Nuevo nombre (dejar en blanco para no cambiar): ").strip()
             nueva_poblacion  = validar_entero("Nueva población (dejar en blanco para no cambiar): ", "población")
-            nueva_superficie = validar_flotante("Nueva superficie (dejar en blanco para no cambiar): ", "superficie")
+            nueva_superficie = validar_entero("Nueva superficie (dejar en blanco para no cambiar): ", "superficie")
             nuevo_continente = input("Nuevo continente (dejar en blanco para no cambiar): ").strip()
 
             if nuevo_nombre:

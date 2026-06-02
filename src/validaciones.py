@@ -20,20 +20,6 @@ def validar_entero(mensaje, campo="campo"):
             print(f"Error: el {campo} debe ser un número entero.")
 
 
-def validar_flotante(mensaje, campo="campo"):
-    while True:
-        valor = input(mensaje).strip()
-        if not valor:
-            return None  # permite dejar en blanco (para actualizar)
-        try:
-            numero = float(valor)
-            if numero > 0:
-                return numero
-            print(f"Error: el {campo} debe ser mayor a 0.")
-        except ValueError:
-            print(f"Error: el {campo} debe ser un número válido.")
-
-
 def validar_confirmacion(mensaje):
     while True:
         valor = input(mensaje).strip().lower()
