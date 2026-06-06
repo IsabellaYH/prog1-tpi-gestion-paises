@@ -3,6 +3,7 @@
 Trabajo Práctico Integrador (TPI) — Programación 1  
 Aplicación de consola en Python para gestionar información de países mediante un archivo CSV.
 Video explicativo - link ->https://drive.google.com/file/d/1Vn_O0QtJTXPsV9ecPbgpW694JeEOr3XN/view?usp=sharing
+Documento en formato PDF según las consignas establecidas - link -> https://drive.google.com/file/d/12JHQisrIUly_M7eyahuof7Fj2YafplN6/view?usp=drive_link
 
 ---
 
